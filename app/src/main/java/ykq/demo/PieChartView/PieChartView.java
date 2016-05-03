@@ -1,5 +1,6 @@
 package ykq.demo.PieChartView;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -8,6 +9,7 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -42,14 +44,30 @@ public class PieChartView extends View {
     private int Gravity=Gravity_TOP;//重力
     public PieChartView(Context context) {
         super(context);
-        init(context, null);
+        init(context,null);
     }
 
     public PieChartView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context, attrs);
+        init(context,attrs);
     }
 
+    public PieChartView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context,attrs);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public PieChartView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        init(context,attrs);
+    }
+
+    /**
+     * 初始化
+     * @param context
+     * @param attrs
+     */
     private void init(Context context, AttributeSet attrs)
     {
         int lableTextSize=0;
@@ -92,10 +110,18 @@ public class PieChartView extends View {
         return datas;
     }
 
+    /**
+     * 设置是否偏移
+     * @param isFistOffSet
+     */
     public void setIsFistOffSet(boolean isFistOffSet) {
         this.isFistOffSet = isFistOffSet;
     }
 
+    /**
+     * 获取绘制矩形
+     * @return
+     */
     public RectF getFanRectF() {
         return FanRectF;
     }
