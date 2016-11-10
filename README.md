@@ -31,8 +31,6 @@ Layout
         chartView.setOnFanClick(new OnFanItemClickListener() {
             @Override
             public void onFanClick(final FanItem fanItem) {
-                if (!fanRoateAniamtionStart)
-                {
                     if (!fanRoateAniamtionStart)
                     {
                         float to;
@@ -70,7 +68,6 @@ Layout
                         animation.setFillAfter(true);
                         chartView.startAnimation(animation);
                     }
-                }
             }
         });
 ```
